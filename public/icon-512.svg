@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="route" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  
+  <!-- Stylized Route Curve -->
+  <path d="M 120 370 C 180 370, 160 210, 260 210 C 340 210, 320 130, 390 130" 
+        fill="none" stroke="url(#route)" stroke-width="18" stroke-linecap="round" stroke-dasharray="8 12" />
+        
+  <!-- Route Pin 1 -->
+  <circle cx="120" cy="370" r="18" fill="#38bdf8" stroke="#ffffff" stroke-width="8"/>
+  <!-- Route Pin 2 -->
+  <circle cx="260" cy="210" r="18" fill="#38bdf8" stroke="#ffffff" stroke-width="8"/>
+  <!-- Route Pin 3 -->
+  <circle cx="390" cy="130" r="22" fill="#fbbf24" stroke="#ffffff" stroke-width="8"/>
+
+  <!-- Center Microphone / Compass Badge -->
+  <g transform="translate(196, 276)">
+    <rect x="-16" y="-16" width="152" height="152" rx="76" fill="#ffffff" opacity="0.15" />
+    <rect x="0" y="0" width="120" height="120" rx="60" fill="#ffffff" />
+    <!-- Mic icon inside badge -->
+    <path d="M60 26 C53.4 26 48 31.4 48 38 L48 62 C48 68.6 53.4 74 60 74 C66.6 74 72 68.6 72 62 L72 38 C72 31.4 66.6 26 60 26 Z" fill="#0284c7" />
+    <path d="M38 52 C38 64.2 47.8 74 60 74 C72.2 74 82 64.2 82 52" fill="none" stroke="#0284c7" stroke-width="6" stroke-linecap="round" />
+    <line x1="60" y1="76" x2="60" y2="92" stroke="#0284c7" stroke-width="6" stroke-linecap="round" />
+    <line x1="46" y1="92" x2="74" y2="92" stroke="#0284c7" stroke-width="6" stroke-linecap="round" />
+  </g>
+</svg>

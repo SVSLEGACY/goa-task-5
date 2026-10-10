@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bg192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="route192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#bg192)" />
+  <path d="M 45 138 C 70 138, 60 78, 96 78 C 128 78, 120 48, 147 48" 
+        fill="none" stroke="url(#route192)" stroke-width="7" stroke-linecap="round" stroke-dasharray="3 5" />
+  <circle cx="45" cy="138" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="96" cy="78" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="147" cy="48" r="8" fill="#fbbf24" stroke="#ffffff" stroke-width="3"/>
+  <g transform="translate(73, 102)">
+    <rect x="0" y="0" width="46" height="46" rx="23" fill="#ffffff" />
+    <path d="M23 10 C20.5 10 18.5 12 18.5 14.5 L18.5 23.5 C18.5 26 20.5 28 23 28 C25.5 28 27.5 26 27.5 23.5 L27.5 14.5 C27.5 12 25.5 10 23 10 Z" fill="#0284c7" />
+    <path d="M14.5 20 C14.5 24.5 18.2 28.2 23 28.2 C27.8 28.2 31.5 24.5 31.5 20" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="23" y1="28.5" x2="23" y2="35" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "RoamVoice - Voice Travel Route & Offline Map Planner",
+  "short_name": "RoamVoice",
+  "description": "Speak your dream trip and generate an optimized multi-city itinerary with efficient travel routes and full offline map access.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0284c7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

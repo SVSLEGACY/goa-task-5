@@ -1,0 +1,8 @@
+{
+  "name": "RoamVoice - Voice Travel Route & Offline Map Planner",
+  "description": "Speak your dream trip and generate an optimized multi-city itinerary with efficient travel routes and full offline map access for travelers.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
