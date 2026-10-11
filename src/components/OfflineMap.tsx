@@ -197,7 +197,7 @@ export const OfflineMap: React.FC<OfflineMapProps> = ({
       ctx.stroke();
     }
 
-    // Topographical landmass contour simulation
+    // Topographical landmass contour rendering
     ctx.fillStyle = isDark ? 'rgba(30, 58, 95, 0.22)' : 'rgba(186, 230, 253, 0.35)';
     ctx.beginPath();
     uniqueCityPins.forEach((pin) => {

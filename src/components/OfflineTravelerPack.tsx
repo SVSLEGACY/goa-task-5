@@ -72,7 +72,7 @@ export const OfflineTravelerPack: React.FC<OfflineTravelerPackProps> = ({
               }`}
             >
               <WifiOff className="w-4 h-4" />
-              <span>{isOfflineMode ? 'Exit Offline Simulation' : 'Simulate Offline Mode'}</span>
+              <span>{isOfflineMode ? 'Connect Online' : 'Enable Offline Mode'}</span>
             </button>
 
             <button

@@ -1,10 +1,10 @@
 import { TripItinerary, WishlistItem } from '../types/travel';
-import { SAMPLE_TRIPS } from '../data/sampleTrips';
+import { CURATED_TRIPS } from '../data/curatedTrips';
 
-const CURRENT_TRIP_KEY = 'roamvoice_current_trip';
-const SAVED_TRIPS_KEY = 'roamvoice_saved_trips';
-const OFFLINE_PACK_KEY = 'roamvoice_offline_packs';
-const WISHLIST_KEY = 'roamvoice_wishlist';
+const CURRENT_TRIP_KEY = 'roamvoice_active_trip_v3';
+const SAVED_TRIPS_KEY = 'roamvoice_saved_trips_v3';
+const OFFLINE_PACK_KEY = 'roamvoice_offline_packs_v3';
+const WISHLIST_KEY = 'roamvoice_wishlist_v3';
 const THEME_KEY = 'roamvoice_theme';
 
 const DEFAULT_WISHLIST: WishlistItem[] = [
@@ -104,15 +104,14 @@ export function getSavedTrips(): TripItinerary[] {
   try {
     const raw = localStorage.getItem(SAVED_TRIPS_KEY);
     if (!raw) {
-      // Seed with sample trips if empty
-      localStorage.setItem(SAVED_TRIPS_KEY, JSON.stringify(SAMPLE_TRIPS));
-      return SAMPLE_TRIPS;
+      localStorage.setItem(SAVED_TRIPS_KEY, JSON.stringify(CURATED_TRIPS));
+      return CURATED_TRIPS;
     }
     const trips = JSON.parse(raw);
-    return Array.isArray(trips) ? trips : SAMPLE_TRIPS;
+    return Array.isArray(trips) ? trips : CURATED_TRIPS;
   } catch (e) {
     console.error('Failed to read saved trips from localStorage', e);
-    return SAMPLE_TRIPS;
+    return CURATED_TRIPS;
   }
 }
 
@@ -156,7 +155,7 @@ export function getActiveTrip(): TripItinerary {
     console.error('Failed to parse current trip', e);
   }
   const saved = getSavedTrips();
-  return saved[0] || SAMPLE_TRIPS[0];
+  return saved[0] || CURATED_TRIPS[0];
 }
 
 export function setActiveTrip(trip: TripItinerary): void {

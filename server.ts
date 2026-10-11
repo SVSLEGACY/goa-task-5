@@ -53,7 +53,7 @@ Your mission:
    - Whenever traveling between airports, cities, beaches, or regions (e.g. Goa Airport -> Palolem, Palolem -> Mandrem, Mandrem -> Airport), generate an ENTIRE LIST OF TAXIS REQUIRED in between those traveling points.
    - Include realistic estimated fares (in local currency e.g. INR ₹ or USD $), travel duration, taxi type (Pre-paid Airport Taxi, Local Cab Stand, Inter-city cab, Scooter/Bike rental), pickup advice, famous spots to stop at along the way (e.g. Cabo de Rama Fort between Palolem and north), and recommended taxi app/booth.
 4. FLIGHTS & HOTELS:
-   - Provide realistic sample flight ticket options/estimates for arrival and departure (with airline, estimated price, departure/arrival times).
+   - Provide realistic flight ticket options and fare estimates for arrival and departure (with airline, estimated price, departure/arrival times).
    - Recommend authentic hotel/stay options for each destination matching the requested nights (e.g. beachfront cottages, boutique resorts) with price per night and vibe.
 5. RESTAURANTS & FAMOUS SPOTS:
    - For every destination, recommend top authentic restaurants and famous spots with recommended dishes and ambiance.
@@ -73,7 +73,7 @@ Your mission:
           type: Type.OBJECT,
           properties: {
             tripTitle: { type: Type.STRING, description: 'Catchy and descriptive title of the trip' },
-            dateRange: { type: Type.STRING, description: 'Sample date range e.g. April 9th 2024 - April 14th 2024' },
+            dateRange: { type: Type.STRING, description: 'Trip date range e.g. April 9th 2024 - April 14th 2024' },
             summary: { type: Type.STRING, description: '1-2 sentence executive overview of the trip' },
             totalDays: { type: Type.INTEGER, description: 'Total number of days in the itinerary' },
             cities: {

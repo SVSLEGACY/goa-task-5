@@ -1,6 +1,6 @@
 import React from 'react';
 import { TripItinerary } from '../types/travel';
-import { SAMPLE_TRIPS } from '../data/sampleTrips';
+import { CURATED_TRIPS } from '../data/curatedTrips';
 import {
   FolderHeart,
   X,
@@ -130,20 +130,20 @@ export const SavedTripsModal: React.FC<SavedTripsModalProps> = ({
           )}
         </div>
 
-        {/* Footer with Preset loader */}
+        {/* Footer with Curated trips loader */}
         <div className="p-4 bg-slate-50 dark:bg-slate-950/70 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-          <span className="text-slate-500">Need inspiration?</span>
+          <span className="text-slate-500 font-medium">Curated Destinations:</span>
           <div className="flex gap-2">
-            {SAMPLE_TRIPS.map((sample) => (
+            {CURATED_TRIPS.map((item) => (
               <button
-                key={sample.id}
+                key={item.id}
                 onClick={() => {
-                  onSelectTrip(sample);
+                  onSelectTrip(item);
                   onClose();
                 }}
                 className="text-xs text-sky-600 dark:text-sky-400 hover:underline font-semibold"
               >
-                Load {sample.cities[0]} Trip
+                {item.cities[0]}
               </button>
             ))}
           </div>

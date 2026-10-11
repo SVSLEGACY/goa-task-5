@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { TripItinerary, WishlistItem } from './types/travel';
-import { SAMPLE_TRIPS } from './data/sampleTrips';
+import { CURATED_TRIPS } from './data/curatedTrips';
 import {
   getActiveTrip,
   setActiveTrip,
@@ -22,6 +22,7 @@ import {
 import { BentoDashboard } from './components/BentoDashboard';
 import { BoardingPassModal } from './components/BoardingPassModal';
 import { VoiceInputBar } from './components/VoiceInputBar';
+import { GeminiSearchBar } from './components/GeminiSearchBar';
 import { OfflineMap } from './components/OfflineMap';
 import { ItineraryTimeline } from './components/ItineraryTimeline';
 import { TaxiTransfersView } from './components/TaxiTransfersView';
@@ -39,6 +40,8 @@ import {
   Sun,
   Moon,
   PlusCircle,
+  Plus,
+  ChevronDown,
   Download,
   Wifi,
   WifiOff,
@@ -205,7 +208,7 @@ export default function App() {
     const updated = deleteSavedTrip(tripId);
     setSavedTrips(updated);
     if (currentTrip.id === tripId) {
-      const fallback = updated[0] || SAMPLE_TRIPS[0];
+      const fallback = updated[0] || CURATED_TRIPS[0];
       setCurrentTrip(fallback);
       setActiveTrip(fallback);
     }
@@ -327,10 +330,14 @@ export default function App() {
           </button>
 
           {/* Bottom user avatar circular button matching Image 2 */}
-          <div className="relative">
+          <div
+            onClick={() => setIsSavedModalOpen(true)}
+            className="relative cursor-pointer hover:scale-105 transition-transform"
+            title="My Saved Trips & Profile"
+          >
             <img
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-              alt="Ellise S."
+              alt="Traveler Profile"
               className="w-10 h-10 rounded-full object-cover border-2 border-slate-700 shadow-md"
             />
             <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-slate-950" />
@@ -352,6 +359,15 @@ export default function App() {
                 }`}
               >
                 Dashboard
+              </button>
+              <button
+                onClick={() => setActiveTab('voice')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all ${
+                  activeTab === 'voice' ? 'bg-sky-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span>Search & Plan</span>
               </button>
               <button
                 onClick={() => setActiveTab('map')}
@@ -393,11 +409,32 @@ export default function App() {
               >
                 Wishlist
               </button>
+              <button
+                onClick={() => setActiveTab('offline')}
+                className={`px-3 py-1.5 rounded-xl transition-all ${
+                  activeTab === 'offline' ? 'bg-sky-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                Offline Kit
+              </button>
             </div>
           </div>
 
           {/* Right Header Controls */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Saved Trips button */}
+            <button
+              onClick={() => setIsSavedModalOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 rounded-xl text-xs font-bold transition-all active:scale-95 cursor-pointer"
+              title="View and switch saved trips"
+            >
+              <FolderHeart className="w-3.5 h-3.5 text-pink-400" />
+              <span className="hidden md:inline">My Trips</span>
+              <span className="text-[10px] bg-slate-700 px-1.5 py-0.2 rounded-full text-slate-300">
+                {savedTrips.length}
+              </span>
+            </button>
+
             {/* View Boarding Pass button matching Image 1 */}
             <button
               onClick={() => setIsBoardingPassOpen(true)}
@@ -408,38 +445,19 @@ export default function App() {
               <span className="hidden sm:inline">Boarding Pass</span>
             </button>
 
-            {/* Offline indicator */}
-            <button
-              onClick={() => setIsOfflineMode((v) => !v)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
-                isOfflineMode || !isNetworkOnline
-                  ? 'bg-amber-950/60 border-amber-800 text-amber-300'
-                  : 'bg-emerald-950/60 border-emerald-800 text-emerald-300'
-              }`}
-              title="Toggle offline map simulation"
-            >
-              {isOfflineMode || !isNetworkOnline ? (
-                <>
-                  <WifiOff className="w-3.5 h-3.5 text-amber-400" />
-                  <span className="hidden sm:inline">Offline Map Ready</span>
-                  <span className="sm:hidden">Offline</span>
-                </>
-              ) : (
-                <>
-                  <Wifi className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="hidden sm:inline">Online / Cached</span>
-                  <span className="sm:hidden">Online</span>
-                </>
-              )}
-            </button>
-
-            {/* Speak New Trip */}
+            {/* Search & Plan pill matching user's Image */}
             <button
               onClick={() => setActiveTab('voice')}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs font-bold shadow-md shadow-sky-600/30 transition-all active:scale-95"
+              className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 bg-[#1b202d] hover:bg-[#232839] border border-slate-700/80 hover:border-sky-500/60 text-slate-200 rounded-full text-xs font-medium shadow-md transition-all active:scale-95 cursor-pointer"
+              title="Search destinations & plan with Gemini"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden sm:inline">Speak Trip</span>
+              <Plus className="w-3.5 h-3.5 text-sky-400" />
+              <span className="hidden sm:inline text-slate-200 font-normal">Where should we start?</span>
+              <span className="sm:hidden text-slate-200">Plan</span>
+              <div className="flex items-center gap-1 text-[11px] text-slate-400 border-l border-slate-700/80 pl-2">
+                <span>Pro</span>
+                <ChevronDown className="w-3 h-3 text-slate-500" />
+              </div>
             </button>
           </div>
         </header>
@@ -455,7 +473,9 @@ export default function App() {
               onOpenTimeline={() => setActiveTab('itinerary')}
               onOpenTaxis={() => setActiveTab('taxis')}
               onOpenFlights={() => setActiveTab('flights')}
+              onUpdateTrip={handleUpdateTrip}
               onEditTrip={() => setActiveTab('itinerary')}
+              onOpenSearch={() => setActiveTab('voice')}
             />
           )}
 
@@ -515,10 +535,10 @@ export default function App() {
             </div>
           )}
 
-          {/* TAB 7: VOICE TRIP PLANNER */}
+          {/* TAB 7: GEMINI SEARCH & TRIP PLANNER matching User's Image */}
           {activeTab === 'voice' && (
-            <div className="max-w-3xl mx-auto space-y-6">
-              <VoiceInputBar
+            <div className="w-full max-w-4xl mx-auto">
+              <GeminiSearchBar
                 onGenerate={handleGenerateItinerary}
                 isLoading={isLoading}
                 initialPrompt={currentTrip.prompt}
@@ -549,7 +569,7 @@ export default function App() {
         isOpen={isBoardingPassOpen}
         onClose={() => setIsBoardingPassOpen(false)}
         flight={currentTrip.flights?.[0]}
-        passengerName="Ellise S."
+        passengerName="Traveler"
         seat="14A"
         gate="B7"
       />

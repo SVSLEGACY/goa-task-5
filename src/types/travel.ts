@@ -38,7 +38,7 @@ export interface TaxiTransfer {
   distanceKm: number;
   duration: string;
   estimatedFare: string; // e.g. "₹1,800 - ₹2,200 ($22-26)"
-  taxiType: 'Pre-paid Airport Taxi' | 'Local Cab Stand' | 'Private Chauffeur' | 'Scooter / Bike Rental' | 'Inter-city Cab';
+  taxiType: 'Pre-paid Airport Taxi' | 'Local Cab Stand' | 'Private Chauffeur' | 'Scooter / Bike Rental' | 'Inter-city Cab' | string;
   pickupAdvice: string;
   famousStopsOnWay?: string[]; // e.g. ["Cabo de Rama Fort", "Agonda Beach viewpoint"]
   recommendedAppOrStand: string; // e.g. "GoaMiles Counter / Airport Pre-Paid Booth"
@@ -55,7 +55,7 @@ export interface FlightTicket {
   date: string;
   estimatedPrice: string; // e.g. "₹4,500 ($54)"
   seatClass?: string;
-  bookingStatus: 'Booked' | 'Looking for flights' | 'Estimated Price';
+  bookingStatus: 'Booked' | 'Looking for flights' | 'Estimated Price' | 'Confirmed' | 'Suggested' | string;
   terminal?: string;
 }
 

@@ -86,7 +86,7 @@ export class SpeechHandler {
       this.initRecognition();
     }
     if (!this.recognition) {
-      this.onError?.('Speech recognition is not supported in this browser. You can type or use sample trips.');
+      this.onError?.('Speech recognition is not supported in this browser. You can type your travel request or choose a destination.');
       return;
     }
 
